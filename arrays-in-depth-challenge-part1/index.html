@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <form name="todo" onsubmit="return validateForm()">
+      <div>
+        <label for="todo_title">New Task:</label>
+        <input name="todo_title" type="text" required oninvalid="this.setCustomValidity('Required and must contain no html characters')" oninput="this.setCustomValidity('')">
+      </div>
+      <div>
+        <label for="todo_description">Task description:</label>
+        <textarea name="todo_description"></textarea>
+      <div>
+        <label for="todo_date">Set Task date:</label>
+        <input name="todo_date" type="date" required oninvalid="this.setCustomValidity('Required. Must select a date')" oninput="this.setCustomValidity('')">
+      </div>
+      <div>
+        <label for="todo_time">Set Task time:</label>
+        <input name="todo_time" type="time" requir
+        const emptyListTaged oninvalid="this.setCustomValidity('Required. Must select a time')" oninput="this.setCustomValidity('')">
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+  <body>
+    <form name="todo" onsubmit="event.preventDefault(); return validateForm()">
+      <div>
+        <label for="todo_title">New Task:</label>
+        <input id="newTask" name="todo_title" type="text" required>
+        <p id="newTaskError" style="display: none; color: red;">Please make sure your task contains no html characters</p>
+      </div>
+      <div>
+        <label for="todo_description">Task description:</label>
+        <textarea name="todo_description"></textarea>
+      <div>
+        <label for="todo_date">Set Task due date:</label>
+        <input name="todo_date" type="date" required>
+      </div>
+      <div>
+        <label for="todo_time">Set Task due time:</label>
+        <input name="todo_time" type="time" required>
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+      <ul id="taskList">
+      </ul>
+    </form>
+    <script>
+      function validateForm() {
+        const targetTodoTitle = document.forms["todo"]["todo_title"].value;
+        const targetTodoDescription = document.forms["todo"]["todo_description"].value;
+        const targetTodoDate = document.forms["todo"]["todo_date"].value;
+        const targetTodoTime = document.forms["todo"]["todo_time"].value;
+
+        if (targetTodoTitle.includes('<') || targetTodoTitle.includes('>')) {
+          document.getElementById("newTaskError").style.display = "block";
+          return false;
+        }
+
+        const emptyListTag = document.createElement("LI");
+
+        const targetTitle = document.createTextNode(targetTodoTitle + " ");
+        // const targetDescription = document.createTextNode(targetTodoDescription + " ");
+        // const targetDate = document.createTextNode(targetTodoDate + " ");
+        // const targetTime = document.createTextNode(targetTodoTime);
+
+        emptyListTag.appendChild(targetTitle);
+        // emptyListTag.appendChild(targetDescription);
+        // emptyListTag.appendChild(targetDate);
+        // emptyListTag.appendChild(targetTime);
+
+        document.getElementById("taskList").appendChild(emptyListTag);
+        return true;
+      }
+    </script>
+  </body>
+</html>
